@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DAY 1 - Number Guessing Game</title>
+    <style type="text/css">
+    /*.form-control {
+        width: 50%;
+    }*/
+    
+    .col-centered {
+        float: none;
+        margin: 0 auto;
+    }
+    
+    .submit_button {
+        display: block;
+        padding: 15px 25px;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 9px #999;
+        margin: 0 auto;
+    }
+    
+    .sumbit_button:hover {
+        background-color: #3e8e41
+    }
+    
+    .submit_button:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <p style="padding: 50px"></p>
+            <h1 class="col-sm-12" style="text-align: center">Number Guessing Game</h1>
+            <div class="col-md-6 col-xs-8  col-centered">
+                <form>
+                    <input type="text" class="form-control" id="input_number" placeholder="Please Enter 0 ~ 100">
+                </form>
+                <p style="padding:15px"></p>
+                <div class="col-centered  ">
+                    <button class="submit_button" onclick="guess()">Submit</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <p  style="padding:15px"></p>
+            <h2  class="col-sm-12 text-center" id="result"></h2>
+            <p  style="padding:15px"></p>
+            <h2  class="col-sm-12 text-center" id="count"></h2>
+        </div>
+    </div>
+</body>
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="guess.js"></script>
+
+</html>
