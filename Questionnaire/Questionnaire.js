@@ -1,56 +1,43 @@
-var Question_1 = {
-    question: "what is the main language on web development?",
-    answers: {
-        one: "C++",
-        two: "Swift",
-        three: "JavaScript"
-    },
-    correct_answer: "three"
-};
-
-
-var Question_2 = {
-    question: "which one is not a JavaScript framework or library?",
-    answers: {
-        one: "spring",
-        two: "React",
-        three: "Angular"
-    },
-    correct_answer: "one"
-};
-
-var Question_3 = {
-    question: "which JavaScript framework can deploy on mobile device?",
-    answers: {
-        one: "React",
-        two: "React Native",
-        three: "Vue"
-    },
-    correct_answer: "two"
-};
-
-
-var Questions = [Question_1, Question_2, Question_3];
-
-//var user_answer = prompt(Questions[Math.floor(Math.random() * 3)].question);
-
-function show_question() {
-    var user_answer = prompt(Questions[Math.floor(Math.random() * 3)].question);
-    var Questions_Object = Questions[Math.floor(Math.random() * 3)].answers;
-    var Questions_array = [Questions_Object.one, Questions_Object.two, Questions_Object.three];
-    console.log("1." + Questions_array[0]);
-    console.log("2." + Questions_array[1]);
-    console.log("3." + Questions_array[2]);
-
+function Questions(question, answers, correct_answer) {
+    this.question = question;
+    this.answers = answers;
+    this.correct_answer = correct_answer;
 }
-//show_question();
-function correct_or_not() {
-    show_question();
-    if (user_answer === Questions[Math.floor(Math.random() * 3)].correct_answer) {
-        console.log("correct!!!");
-        show_question();
-    } else {
-        console.log("Wrong!!! Please try it again.");
 
+Questions.prototype.display_question = function () {
+    console.log(this.question);
+
+    for (var i = 0; i < this.answers.length; i++) {
+        console.log(i + ': ' + this.answers[i]);
+    }
+};
+
+Questions.prototype.correct_or_not = function () {
+    var user_answer = prompt("your answer is?");
+    if (this.correct_answer === parseInt(user_answer)) {
+        console.log("Correct!!");
+    } else {
+        console.log("Wrong!!");
     }
 }
+
+
+
+var Question_1 = new Questions("what is the main language on web development?", ["C++", "Swift", "JavaScript"],
+    2);
+//new一個新的object，並利用Questions函數將元素加上Question_1的Object中
+
+var Question_2 = new Questions("which one is not a JavaScript framework or library?", ["Spring", "React", "Angular"],
+    0);
+
+
+var Question_3 = new Questions("which JavaScript framework can deploy on mobile device?", ["React", "React Native", "Vue"],
+    1);
+
+
+var Questions_array = [Question_1, Question_2, Question_3];
+
+var n = Math.floor(Math.random() * Questions_array.length);
+
+Questions_array[n].display_question();
+Questions_array[n].correct_or_not();
