@@ -16,16 +16,18 @@
     };
 
 
-    var get_score = score();
-    Questions.prototype.correct_or_not = function (user_ans, score) {
 
+    Questions.prototype.correct_or_not = function (user_ans, callback) {
+            var score;
             if (this.correct_answer === parseInt(user_ans)) {
                 console.log("Correct!!");
-                console.log("score:" + get_score(true));
+                score = callback(true);
+                console.log("score:" + score);
                 console.log("-----------------");
             } else {
                 console.log("Wrong!!");
-                console.log("score:" + get_score(false));
+                score = callback(false);
+                console.log("score:" + score);
                 console.log("-----------------");
             }
 
@@ -53,16 +55,16 @@
     function score() {
         var sc = 0;
 
-        function getscore(correct) {
+        return function (correct) {
             //console.log(correct);
             if (correct) {
                 sc++;
             }
             return sc;
         }
-        return getscore;
-    }
 
+    }
+    var get_score = score();
 
 
 
@@ -73,7 +75,7 @@
         Questions_array[n].display_question();
 
         var user_answer = prompt("your answer is?");
-        Questions_array[n].correct_or_not(user_answer, score);
+        Questions_array[n].correct_or_not(user_answer, get_score);
 
         if (user_answer !== "exit") {
             nextQuestion();
